@@ -1,38 +1,5 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "name": "Combo Futuro Alpha",
-      "category": "Tecnología",
-      "price": 89.99,
-      "emoji": "🤖",
-      "image": "",
-      "imageType": "emoji",
-      "description": "El combo perfecto para los amantes de la tecnología",
-      "items": [
-        "Smart Watch",
-        "Audífonos BT",
-        "Cargador Solar"
-      ],
-      "active": true
-    },
-    {
-      "id": 2,
-      "name": "Combo Gamer Pro",
-      "category": "Gaming",
-      "price": 149.99,
-      "emoji": "🎮",
-      "image": "",
-      "imageType": "emoji",
-      "description": "Domina cada partida con este combo diseñado para gamers",
-      "items": [
-        "Mouse RGB",
-        "Teclado Mecánico",
-        "Headset 7.1"
-      ],
-      "active": true
-    }
-  ],
+  "products": [],
   "settings": {
     "whatsappNumber": "5358776771",
     "storeName": "FutureShop",
