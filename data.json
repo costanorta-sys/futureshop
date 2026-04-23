@@ -1,5 +1,22 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "Combo#1",
+      "category": "Comida",
+      "price": 99.99,
+      "emoji": "",
+      "image": "",
+      "imageType": "emoji",
+      "description": "",
+      "items": [
+        "1 PACK DE POLLO DE 10 LB 1 PACK DE FILETE DE CERDO 5 lb 1 POMO DE ACEITE 1 PACK DE ARROZ 1 kg  1 PACK DE AZÚCAR 1 kg 1 PACK DE ESPAGUETIS 1 PACK DE SALCHICHA 1 PICADILLO 1 CAFÉ LA LLAVE 1 PACK DE CADITO DE CARNE 3 PACK DE REFRESCO INSTANTÁNEO 1 PASTA DE TOMATE 1 PACK DE CROQUETAS (20 unidades o más) 1 PACK DE LECHE EN POLVO 1 PACK DE SORBETO 1 GELATINA 1 DETERGENTE LIQUIDÓ 1 PACK DE PAPEL SANITARIO 1 PASTA DENTAL 1 DETERGENTE EN POLVO 1 JABÓN DE BAÑO"
+      ],
+      "active": true,
+      "updatedAt": "2026-04-23T13:07:52.564Z",
+      "createdAt": "2026-04-23T13:07:52.564Z"
+    }
+  ],
   "settings": {
     "whatsappNumber": "5358776771",
     "storeName": "FutureShop",
