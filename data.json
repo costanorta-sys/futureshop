@@ -31,23 +31,6 @@
         "Headset 7.1"
       ],
       "active": true
-    },
-    {
-      "id": 3,
-      "name": "jamon pierna",
-      "category": "comiida",
-      "price": 3000,
-      "emoji": "",
-      "image": "",
-      "imageType": "emoji",
-      "description": "especial",
-      "items": [
-        "mejorana",
-        "gratis"
-      ],
-      "active": true,
-      "updatedAt": "2026-04-23T12:44:45.183Z",
-      "createdAt": "2026-04-23T12:44:45.183Z"
     }
   ],
   "settings": {
