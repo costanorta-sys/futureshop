@@ -13,7 +13,10 @@
         "Cargador Solar"
       ],
       "active": true,
-      "createdAt": "2026-04-23T14:32:47.020Z"
+      "createdAt": "2026-04-23T14:32:47.020Z",
+      "image": "",
+      "imageType": "emoji",
+      "updatedAt": "2026-04-24T03:16:35.632Z"
     },
     {
       "id": 2,
