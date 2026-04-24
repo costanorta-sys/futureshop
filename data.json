@@ -55,6 +55,21 @@
       "active": true,
       "updatedAt": "2026-04-24T07:15:19.504Z",
       "createdAt": "2026-04-24T07:15:19.504Z"
+    },
+    {
+      "id": 4,
+      "name": "Jabon",
+      "category": "aseo",
+      "type": "unitario",
+      "price": 100,
+      "emoji": "",
+      "image": "",
+      "imageType": "emoji",
+      "description": "para labar",
+      "items": [],
+      "active": true,
+      "updatedAt": "2026-04-24T07:58:30.421Z",
+      "createdAt": "2026-04-24T07:58:30.421Z"
     }
   ],
   "settings": {
