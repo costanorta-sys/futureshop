@@ -1,0 +1,32 @@
+name: Update Data from API
+
+on:
+  # Permite ejecutar manualmente desde GitHub
+  workflow_dispatch:
+    inputs:
+      data:
+        description: 'JSON data to save'
+        required: true
+        type: string
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Save data to file
+        run: |
+          echo '${{ github.event.inputs.data }}' > data.json
+          # Validar que sea JSON válido
+          cat data.json | jq . > /dev/null 2>&1 || exit 1
+      
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update data.json from API"
+          git push
