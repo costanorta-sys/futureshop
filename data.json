@@ -1,21 +1,7 @@
 {
-  "products": [
-    {
-      "id": 2,
-      "name": "Licuadora Pro",
-      "category": "electrodomesticos",
-      "type": "unitario",
-      "price": 149.99,
-      "emoji": "📺",
-      "image": "",
-      "imageType": "emoji",
-      "description": "Licuadora de alta potencia para tu hogar",
-      "items": [],
-      "active": true
-    }
-  ],
+  "products": [],
   "settings": {
-    "whatsappNumber": "5491112345678",
+    "whatsappNumber": "5358776771",
     "storeName": "FutureShop",
     "currencySymbol": "$"
   }
