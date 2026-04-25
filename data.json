@@ -1,23 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Combo Familiar",
-      "category": "combo",
-      "type": "combo",
-      "price": 89.99,
-      "emoji": "🎁",
-      "image": "",
-      "imageType": "emoji",
-      "description": "El paquete ideal para toda la familia",
-      "items": [
-        "Producto A",
-        "Producto B",
-        "Producto C"
-      ],
-      "active": true
-    },
-    {
       "id": 2,
       "name": "Licuadora Pro",
       "category": "electrodomesticos",
