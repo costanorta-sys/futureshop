@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>MODA FIT · Gym Style & Cuidado Personal</title>
+    <title>MODA FIT · Gym Style & Accesorios</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -31,7 +31,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 32px;
             padding-bottom: 12px;
             border-bottom: 2px solid rgba(0,0,0,0.04);
         }
@@ -61,37 +61,6 @@
 
         .logo .tagline i {
             color: #e67e22;
-        }
-
-        /* Filtro de categorías */
-        .categorias-filtro {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .filtro-btn {
-            background: #f0f2f5;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.2s;
-            color: #1e2a3a;
-            white-space: nowrap;
-        }
-        .filtro-btn.active {
-            background: #e67e22;
-            color: white;
-        }
-        .filtro-btn:hover {
-            background: #e67e22;
-            color: white;
         }
 
         .cart-icon-header {
@@ -163,6 +132,58 @@
             font-weight: bold;
         }
 
+        /* Barra de categorías sticky */
+        .categorias-bar {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 99;
+            padding: 12px 0;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .categoria-btn {
+            background: #f0f2f5;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1e2a3a;
+        }
+
+        .categoria-btn:hover {
+            background: #e67e22;
+            color: white;
+        }
+
+        .categoria-btn.activa {
+            background: #e67e22;
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .categorias-bar {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                gap: 8px;
+                padding: 8px 0;
+            }
+            .categoria-btn {
+                white-space: nowrap;
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
         .productos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -231,25 +252,21 @@
             font-weight: 700;
             color: #1e2a3a;
         }
-        .product-categoria {
-            font-size: 0.7rem;
-            color: #e67e22;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+
         .product-price {
             font-size: 1.4rem;
             font-weight: 800;
             color: #e67e22;
             margin: 8px 0;
         }
+
         .product-desc {
             color: #5f6c7a;
             font-size: 0.85rem;
             margin-bottom: 16px;
             flex: 1;
         }
+
         .add-to-cart {
             display: flex;
             gap: 10px;
@@ -300,7 +317,6 @@
             background: #e67e22;
         }
 
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -425,7 +441,6 @@
             cursor: pointer;
         }
 
-        /* Admin Panel */
         .admin-container {
             max-width: 1300px;
             margin: 20px auto;
@@ -509,22 +524,6 @@
             color: #721c24;
         }
 
-        /* Estilos para gestión de categorías en admin */
-        .categoria-item {
-            display: inline-block;
-            background: #eef2f5;
-            padding: 5px 12px;
-            border-radius: 30px;
-            margin: 5px;
-            font-size: 0.8rem;
-        }
-        .categoria-actions button {
-            background: none;
-            color: #e67e22;
-            padding: 0 5px;
-            font-size: 0.8rem;
-        }
-
         .toast-msg {
             position: fixed;
             bottom: 20px;
@@ -561,10 +560,12 @@
             border: 1px solid #1e2a3a;
             color: #1e2a3a;
         }
+
         .btn-outline:hover {
             background: #1e2a3a;
             color: white;
         }
+
         @media (max-width: 640px) {
             .app-container { padding: 16px; }
             .productos-grid { gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
@@ -588,8 +589,12 @@
                 <span class="cart-count" id="cartCountHeader">0</span>
             </div>
         </div>
-        <!-- Filtro de categorías -->
-        <div id="categoriasFiltro" class="categorias-filtro"></div>
+
+        <!-- Barra de categorías sticky -->
+        <div id="categoriasBar" class="categorias-bar">
+            <button class="categoria-btn activa" data-cat="todas">📦 Todas</button>
+        </div>
+
         <div id="productosGrid" class="productos-grid"></div>
         <footer><i class="fas fa-dumbbell"></i> MODA FIT · Entrena con actitud</footer>
     </div>
@@ -619,7 +624,7 @@
         </div>
     </div>
 
-    <!-- PANEL ADMIN -->
+    <!-- PANEL ADMIN (ruta oculta /admin) -->
     <div id="adminPanelRoot" style="display: none;">
         <div class="admin-container">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
@@ -637,57 +642,66 @@
             <div id="adminDashboard" style="display: none;">
                 <!-- Gestión de categorías -->
                 <div class="admin-card">
-                    <h3><i class="fas fa-tags"></i> Gestionar categorías</h3>
+                    <h3><i class="fas fa-tags"></i> Gestionar Categorías</h3>
                     <div class="form-group">
                         <label>Nueva categoría</label>
-                        <div style="display: flex; gap: 8px;">
-                            <input type="text" id="nuevaCategoriaNombre" placeholder="Ej: Ropa, Accesorios, Cuidado Personal">
-                            <button id="agregarCategoriaBtn">Agregar</button>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="newCategoriaNombre" placeholder="Ej: Ropa, Accesorios, Cuidado Personal">
+                            <button id="addCategoriaBtn">Agregar</button>
                         </div>
                     </div>
-                    <div id="listaCategoriasAdmin" style="margin-top: 15px;"></div>
+                    <div id="categoriasList" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;"></div>
                 </div>
+
                 <!-- Gestión de productos -->
                 <div class="admin-card">
                     <h3><i class="fas fa-boxes"></i> Gestionar productos</h3>
                     <input type="hidden" id="editId" value="">
                     <div class="form-group"><label>Nombre</label><input type="text" id="prodName" placeholder="Ej: Conjunto Deportivo"></div>
                     <div class="form-group"><label>Precio (USD)</label><input type="number" step="0.01" id="prodPrice"></div>
-                    <div class="form-group"><label>Categoría</label><select id="prodCategoria"></select></div>
                     <div class="form-group"><label>Descripción</label><textarea id="prodDescription" rows="2"></textarea></div>
                     <div class="form-group"><label>Imagen</label><input type="file" id="prodImage" accept="image/*"><div id="imagePreview"></div></div>
                     <div class="form-group">
-                        <label>Estado</label>
+                        <label>Estado del producto</label>
                         <select id="prodEstado">
-                            <option value="activo">Activo</option>
-                            <option value="inactivo">Inactivo</option>
+                            <option value="activo">Activo (visible en tienda)</option>
+                            <option value="inactivo">Inactivo (oculto)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="prodCategoria">
+                            <option value="">Sin categoría</option>
                         </select>
                     </div>
                     <button id="saveProductBtn">Guardar producto</button>
                     <button id="cancelEditBtn" class="btn-outline" style="margin-left: 10px;">Cancelar</button>
                 </div>
+
                 <div class="admin-card">
                     <h3>📋 Lista de productos</h3>
                     <div id="adminProductsList"></div>
                 </div>
+
                 <div class="admin-card">
                     <h3><i class="fab fa-whatsapp"></i> WhatsApp para pedidos</h3>
                     <div class="form-group"><label>Número (código país sin +)</label><input type="tel" id="whatsappNumberConfig" placeholder="573001234567"></div>
                     <button id="saveConfigBtn">Guardar número</button>
                     <hr style="margin: 25px 0;">
-                    <h3><i class="fas fa-cloud-upload-alt"></i> Sincronización JSON</h3>
-                    <p>Exporta productos y categorías a <strong>modafit_data.json</strong> y súbelo a tu repositorio.</p>
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Sincronización con GitHub (JSON)</h3>
+                    <p>La tienda carga automáticamente los productos desde <strong>modafit_data.json</strong> (ruta configurable). Si editas productos desde aquí, <strong>exporta el JSON</strong> y súbelo a tu repositorio para actualizar la tienda.</p>
                     <div class="form-group">
-                        <label>URL del JSON remoto</label>
+                        <label>URL del JSON remoto (por defecto "./modafit_data.json")</label>
                         <input type="text" id="remoteJsonUrl" placeholder="./modafit_data.json">
                     </div>
-                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Sincronizar desde JSON</button>
-                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos a JSON</button>
-                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar desde JSON</button>
+                    <button id="fetchRemoteDataBtn"><i class="fas fa-download"></i> Sincronizar manual desde JSON ahora</button>
+                    <button id="exportDataBtn" style="background:#27ae60; margin-top: 15px;"><i class="fas fa-file-export"></i> Exportar datos actuales a JSON (descargar)</button>
+                    <button id="importDataBtn" style="background:#8e44ad;"><i class="fas fa-file-import"></i> Importar desde archivo JSON local</button>
                     <input type="file" id="importFileInput" accept=".json" style="display: none;">
                 </div>
+
                 <div class="admin-card">
-                    <h3>🔑 Cambiar contraseña</h3>
+                    <h3>🔑 Cambiar contraseña del panel</h3>
                     <div class="form-group"><input type="password" id="newAdminPass" placeholder="Nueva contraseña"></div>
                     <button id="changePassBtn">Actualizar contraseña</button>
                 </div>
@@ -698,25 +712,25 @@
     <script>
         // ==================== STORAGE KEYS ====================
         const STORAGE_PRODUCTS = 'modafit_productos';
-        const STORAGE_CATEGORIES = 'modafit_categorias';
         const STORAGE_CONFIG = 'modafit_config';
         const STORAGE_ADMIN_PASS = 'modafit_admin_pass';
         const STORAGE_CART = 'modafit_cart';
         const STORAGE_REMOTE_URL = 'modafit_remote_url';
+        const STORAGE_CATEGORIES = 'modafit_categorias';
 
         let productos = [];
-        let categorias = []; // { id, nombre }
+        let categorias = [];
         let config = { whatsappNumber: "573001234567" };
         let adminPassword = "admin123";
         let cart = [];
         let remoteJsonUrl = "./modafit_data.json";
-        let categoriaSeleccionada = "todos"; // filtro actual
+        let categoriaActiva = "todas";
 
-        // DOM elements
+        // ==================== DOM ELEMENTOS ====================
         const publicShopDiv = document.getElementById('publicShop');
         const adminPanelRoot = document.getElementById('adminPanelRoot');
         const productosGrid = document.getElementById('productosGrid');
-        const categoriasFiltroDiv = document.getElementById('categoriasFiltro');
+        const categoriasBar = document.getElementById('categoriasBar');
         const cartIconHeader = document.getElementById('cartIconHeader');
         const cartCountHeader = document.getElementById('cartCountHeader');
         const floatingCartBtn = document.getElementById('floatingCartBtn');
@@ -747,9 +761,6 @@
         const cancelEditBtn = document.getElementById('cancelEditBtn');
         const editId = document.getElementById('editId');
         const adminProductsList = document.getElementById('adminProductsList');
-        const listaCategoriasAdmin = document.getElementById('listaCategoriasAdmin');
-        const nuevaCategoriaNombre = document.getElementById('nuevaCategoriaNombre');
-        const agregarCategoriaBtn = document.getElementById('agregarCategoriaBtn');
         const whatsappNumberConfig = document.getElementById('whatsappNumberConfig');
         const saveConfigBtn = document.getElementById('saveConfigBtn');
         const newAdminPass = document.getElementById('newAdminPass');
@@ -759,8 +770,11 @@
         const importFileInput = document.getElementById('importFileInput');
         const remoteJsonUrlInput = document.getElementById('remoteJsonUrl');
         const fetchRemoteDataBtn = document.getElementById('fetchRemoteDataBtn');
+        const newCategoriaNombre = document.getElementById('newCategoriaNombre');
+        const addCategoriaBtn = document.getElementById('addCategoriaBtn');
+        const categoriasListDiv = document.getElementById('categoriasList');
 
-        // ==================== FUNCIONES ====================
+        // ==================== FUNCIONES COMUNES ====================
         function showMessage(msg, isError = false) {
             const toast = document.createElement('div');
             toast.className = 'toast-msg';
@@ -779,79 +793,96 @@
             saveProductsToLocal();
             saveCategoriesToLocal();
             renderProductos();
-            renderFiltroCategorias();
-            if (adminDashboardDiv.style.display === 'block') {
+            if (adminProductsList && adminDashboardDiv.style.display === 'block') {
                 renderAdminProductList();
-                renderAdminCategoriasList();
-                cargarCategoriasEnSelect();
+                renderCategoriasAdmin();
             }
+            actualizarFiltrosCategoria();
         }
 
-        // Cargar datos desde JSON remoto
-        async function loadFromRemoteJson(showFeedback = true, updateLocalStorage = true) {
+        async function loadProductsFromRemoteJson(showFeedback = true, updateLocalStorage = true) {
             let url = remoteJsonUrlInput ? remoteJsonUrlInput.value : remoteJsonUrl;
             if (!url) url = "./modafit_data.json";
             try {
                 const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const data = await response.json();
-                if (data.productos && Array.isArray(data.productos)) {
-                    productos = data.productos;
+                const remoteData = await response.json();
+                if (remoteData.productos && Array.isArray(remoteData.productos)) {
+                    productos = remoteData.productos;
                     if (updateLocalStorage) saveProductsToLocal();
-                }
-                if (data.categorias && Array.isArray(data.categorias)) {
-                    categorias = data.categorias;
-                    if (updateLocalStorage) saveCategoriesToLocal();
-                } else if (!categorias.length) {
-                    // categorías por defecto
-                    categorias = [{ id: 1, nombre: "Ropa" }, { id: 2, nombre: "Accesorios" }, { id: 3, nombre: "Cuidado Personal" }];
-                    saveCategoriesToLocal();
-                }
-                if (data.config && data.config.whatsappNumber) {
-                    config.whatsappNumber = data.config.whatsappNumber;
-                    if (updateLocalStorage) saveConfigToLocal();
-                    if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
-                }
-                if (showFeedback) showMessage("✅ Datos sincronizados desde JSON");
-                persistAll();
-                return true;
+                    if (remoteData.categorias && Array.isArray(remoteData.categorias)) {
+                        categorias = remoteData.categorias;
+                        if (updateLocalStorage) saveCategoriesToLocal();
+                    } else {
+                        const catsUnicas = [...new Set(productos.map(p => p.categoria).filter(c => c && c.trim() !== ""))];
+                        categorias = catsUnicas;
+                        if (updateLocalStorage) saveCategoriesToLocal();
+                    }
+                    if (remoteData.config && remoteData.config.whatsappNumber) {
+                        config.whatsappNumber = remoteData.config.whatsappNumber;
+                        if (updateLocalStorage) saveConfigToLocal();
+                        if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
+                    }
+                    if (showFeedback) showMessage("✅ Datos sincronizados desde JSON remoto");
+                    renderProductos();
+                    actualizarSelectCategorias();
+                    construirBarraCategorias();
+                    if (adminProductsList && adminDashboardDiv.style.display === 'block') {
+                        renderAdminProductList();
+                        renderCategoriasAdmin();
+                    }
+                    return true;
+                } else throw new Error("Formato inválido");
             } catch (err) {
-                if (showFeedback) showMessage(`⚠️ No se pudo cargar JSON: ${err.message}. Usando datos locales.`, true);
+                if (showFeedback) showMessage(`⚠️ No se pudo cargar JSON remoto. Usando datos locales.`, true);
                 const storedProducts = localStorage.getItem(STORAGE_PRODUCTS);
-                if (storedProducts) productos = JSON.parse(storedProducts);
                 const storedCats = localStorage.getItem(STORAGE_CATEGORIES);
+                if (storedProducts) productos = JSON.parse(storedProducts);
+                else {
+                    productos = [
+                        { id: 101, nombre: "Conjunto Deportivo Elite", precio: 59.99, descripcion: "Camiseta + short de compresión.", activo: true, categoria: "Ropa", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c3e66'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3E🔥CONJUNTO%3C/text%3E%3C/svg%3E" },
+                        { id: 102, nombre: "Top sin costuras + Leggings", precio: 74.99, descripcion: "Pack de dos piezas, tela respirável.", activo: true, categoria: "Ropa", imagenBase64: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e67e22'/%3E%3Ctext x='50' y='55' font-size='12' fill='white' text-anchor='middle'%3ETOP%2BLEGGINGS%3C/text%3E%3C/svg%3E" }
+                    ];
+                    saveProductsToLocal();
+                }
                 if (storedCats) categorias = JSON.parse(storedCats);
                 else {
-                    categorias = [{ id: 1, nombre: "Ropa" }, { id: 2, nombre: "Accesorios" }, { id: 3, nombre: "Cuidado Personal" }];
+                    categorias = ["Ropa"];
                     saveCategoriesToLocal();
                 }
-                persistAll();
+                renderProductos();
+                actualizarSelectCategorias();
+                construirBarraCategorias();
+                if (adminProductsList && adminDashboardDiv.style.display === 'block') {
+                    renderAdminProductList();
+                    renderCategoriasAdmin();
+                }
                 return false;
             }
         }
 
-        function renderFiltroCategorias() {
-            if (!categoriasFiltroDiv) return;
-            let html = `<button class="filtro-btn ${categoriaSeleccionada === 'todos' ? 'active' : ''}" data-cat="todos">Todos</button>`;
-            categorias.forEach(cat => {
-                html += `<button class="filtro-btn ${categoriaSeleccionada == cat.id ? 'active' : ''}" data-cat="${cat.id}">${escapeHtml(cat.nombre)}</button>`;
-            });
-            categoriasFiltroDiv.innerHTML = html;
-            document.querySelectorAll('.filtro-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const catVal = btn.getAttribute('data-cat');
-                    categoriaSeleccionada = catVal === 'todos' ? 'todos' : parseInt(catVal);
-                    renderProductos();
-                    renderFiltroCategorias(); // actualizar estilos
+        function shareProduct(nombre, url) {
+            const shareText = `🔥 ¡Mira este producto de MODA FIT! 🔥\n\n✨ ${nombre}\n\n🛍️ ¡Cómpralo aquí! 👇\n${url}`;
+            if (navigator.share) {
+                navigator.share({ title: nombre, text: shareText, url: url }).catch((err) => {
+                    if (err.name !== 'AbortError') showMessage('Error al intentar compartir', true);
                 });
-            });
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = `${shareText}\n\nEnlace directo: ${url}`;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showMessage('✅ Mensaje copiado al portapapeles');
+            }
         }
 
         function renderProductos() {
             if (!productosGrid) return;
             let productosFiltrados = productos.filter(p => p.activo === true);
-            if (categoriaSeleccionada !== 'todos') {
-                productosFiltrados = productosFiltrados.filter(p => p.categoriaId == categoriaSeleccionada);
+            if (categoriaActiva !== "todas") {
+                productosFiltrados = productosFiltrados.filter(p => p.categoria === categoriaActiva);
             }
             if (productosFiltrados.length === 0) {
                 productosGrid.innerHTML = `<div style="text-align:center; padding:60px;">✨ No hay productos en esta categoría.</div>`;
@@ -860,7 +891,6 @@
             let html = '';
             for (let prod of productosFiltrados) {
                 const imgSrc = prod.imagenBase64 || 'https://placehold.co/600x400?text=MODA+FIT';
-                const categoriaNombre = categorias.find(c => c.id == prod.categoriaId)?.nombre || 'General';
                 html += `
                     <div class="product-card">
                         <div class="product-img-container" data-fullimg="${imgSrc}">
@@ -868,14 +898,14 @@
                             <div class="zoom-icon"><i class="fas fa-search-plus"></i> Ver completa</div>
                         </div>
                         <div class="product-info">
-                            <div class="product-categoria">${escapeHtml(categoriaNombre)}</div>
                             <div class="product-title">${escapeHtml(prod.nombre)}</div>
                             <div class="product-price">$${prod.precio.toFixed(2)}</div>
                             <div class="product-desc">${escapeHtml(prod.descripcion.substring(0, 100))}</div>
+                            ${prod.categoria ? `<div style="font-size:0.7rem; color:#e67e22; margin-bottom:8px;"><i class="fas fa-tag"></i> ${escapeHtml(prod.categoria)}</div>` : ''}
                             <div class="add-to-cart">
                                 <input type="number" id="qty-${prod.id}" class="quantity-input" value="1" min="1" step="1">
                                 <button class="btn-add" data-id="${prod.id}" data-nombre="${escapeHtml(prod.nombre)}" data-precio="${prod.precio}" data-img="${imgSrc}">Agregar <i class="fas fa-cart-plus"></i></button>
-                                <button class="btn-share" data-nombre="${escapeHtml(prod.nombre)}" data-url="${window.location.href}"><i class="fas fa-share-alt"></i> Compartir</button>
+                                <button class="btn-share" data-nombre="${escapeHtml(prod.nombre)}" data-url="${window.location.href}"><i class="fas fa-share-alt"></i></button>
                             </div>
                         </div>
                     </div>
@@ -896,32 +926,104 @@
             });
             document.querySelectorAll('.btn-share').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    shareProduct(btn.getAttribute('data-nombre'), btn.getAttribute('data-url'));
+                    const nombre = btn.getAttribute('data-nombre');
+                    const url = btn.getAttribute('data-url');
+                    shareProduct(nombre, url);
                 });
             });
             document.querySelectorAll('.product-img-container').forEach(container => {
-                container.addEventListener('click', () => {
+                container.addEventListener('click', (e) => {
                     const fullImg = container.getAttribute('data-fullimg');
                     if (fullImg) { lightboxImg.src = fullImg; lightbox.style.display = 'flex'; }
                 });
             });
         }
 
-        function shareProduct(nombre, url) {
-            const shareText = `🔥 ¡Mira este producto de MODA FIT! 🔥\n\n✨ ${nombre}\n\n🛍️ ¡Cómpralo aquí! 👇\n${url}`;
-            if (navigator.share) {
-                navigator.share({ title: nombre, text: shareText, url: url }).catch(() => {});
-            } else {
-                const textarea = document.createElement('textarea');
-                textarea.value = `${shareText}\n\nEnlace: ${url}`;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showMessage('✅ Mensaje copiado al portapapeles');
-            }
+        function actualizarFiltrosCategoria() {
+            if (!categoriasBar) return;
+            const botones = categoriasBar.querySelectorAll('.categoria-btn');
+            botones.forEach(btn => {
+                const cat = btn.getAttribute('data-cat');
+                if (cat === categoriaActiva) btn.classList.add('activa');
+                else btn.classList.remove('activa');
+            });
+            renderProductos();
         }
 
+        function construirBarraCategorias() {
+            if (!categoriasBar) return;
+            let html = `<button class="categoria-btn ${categoriaActiva === 'todas' ? 'activa' : ''}" data-cat="todas">📦 Todas</button>`;
+            categorias.forEach(cat => {
+                html += `<button class="categoria-btn ${categoriaActiva === cat ? 'activa' : ''}" data-cat="${escapeHtml(cat)}">🏷️ ${escapeHtml(cat)}</button>`;
+            });
+            categoriasBar.innerHTML = html;
+            document.querySelectorAll('.categoria-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoriaActiva = btn.getAttribute('data-cat');
+                    actualizarFiltrosCategoria();
+                    construirBarraCategorias();
+                });
+            });
+        }
+
+        function actualizarSelectCategorias() {
+            if (!prodCategoria) return;
+            let options = '<option value="">Sin categoría</option>';
+            categorias.forEach(cat => {
+                options += `<option value="${escapeHtml(cat)}">${escapeHtml(cat)}</option>`;
+            });
+            prodCategoria.innerHTML = options;
+        }
+
+        function renderCategoriasAdmin() {
+            if (!categoriasListDiv) return;
+            if (categorias.length === 0) {
+                categoriasListDiv.innerHTML = '<p>No hay categorías. Agrega una arriba.</p>';
+                return;
+            }
+            let html = '';
+            categorias.forEach((cat, idx) => {
+                html += `
+                    <div style="background:#f0f2f5; border-radius:30px; padding:6px 14px; display:inline-flex; align-items:center; gap:8px;">
+                        <span>${escapeHtml(cat)}</span>
+                        <button class="eliminar-categoria" data-cat="${escapeHtml(cat)}" style="background:#dc3545; padding:4px 10px; font-size:0.7rem;">✖</button>
+                    </div>
+                `;
+            });
+            categoriasListDiv.innerHTML = html;
+            document.querySelectorAll('.eliminar-categoria').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const catAEliminar = btn.getAttribute('data-cat');
+                    if (confirm(`¿Eliminar categoría "${catAEliminar}"? Los productos quedarán sin categoría.`)) {
+                        categorias = categorias.filter(c => c !== catAEliminar);
+                        productos.forEach(p => { if (p.categoria === catAEliminar) p.categoria = ""; });
+                        saveCategoriesToLocal();
+                        saveProductsToLocal();
+                        actualizarSelectCategorias();
+                        renderCategoriasAdmin();
+                        construirBarraCategorias();
+                        renderAdminProductList();
+                        renderProductos();
+                        showMessage(`Categoría "${catAEliminar}" eliminada`);
+                    }
+                });
+            });
+        }
+
+        function agregarCategoria() {
+            const nueva = newCategoriaNombre.value.trim();
+            if (!nueva) { showMessage("Escribe un nombre para la categoría", true); return; }
+            if (categorias.includes(nueva)) { showMessage("La categoría ya existe", true); return; }
+            categorias.push(nueva);
+            saveCategoriesToLocal();
+            actualizarSelectCategorias();
+            renderCategoriasAdmin();
+            construirBarraCategorias();
+            newCategoriaNombre.value = '';
+            showMessage(`Categoría "${nueva}" agregada`);
+        }
+
+        // ==================== CARRITO ====================
         function agregarAlCarrito(id, nombre, precio, imagen, cantidad) {
             const existing = cart.find(item => item.id === id);
             if (existing) existing.cantidad += cantidad;
@@ -940,17 +1042,18 @@
         function renderCartModal() {
             if (!cartItemsList) return;
             if (cart.length === 0) {
-                cartItemsList.innerHTML = '<div style="text-align:center; padding:30px;">🛍️ Carrito vacío</div>';
+                cartItemsList.innerHTML = '<div style="text-align:center; padding:30px;">🛍️ El carrito está vacío</div>';
                 cartTotalSpan.innerHTML = '';
                 return;
             }
-            let itemsHtml = '', total = 0;
+            let itemsHtml = '';
+            let total = 0;
             cart.forEach((item, idx) => {
                 const subtotal = item.precio * item.cantidad;
                 total += subtotal;
                 itemsHtml += `
                     <div class="cart-item">
-                        <img class="cart-item-img" src="${item.imagen}">
+                        <img class="cart-item-img" src="${item.imagen}" onerror="this.src='https://placehold.co/55x55'">
                         <div style="flex:2"><strong>${escapeHtml(item.nombre)}</strong><br>$${item.precio.toFixed(2)} c/u</div>
                         <div class="cart-qty-control">
                             <button class="cart-dec" data-idx="${idx}">-</button>
@@ -979,209 +1082,15 @@
             let message = "🛍️ *PEDIDO MODA FIT*%0A";
             let total = 0;
             cart.forEach(item => {
-                total += item.precio * item.cantidad;
-                message += `▪️ ${item.cantidad} x ${item.nombre} = $${(item.precio * item.cantidad).toFixed(2)}%0A`;
+                const subtotal = item.precio * item.cantidad;
+                total += subtotal;
+                message += `▪️ ${item.cantidad} x ${item.nombre} = $${subtotal.toFixed(2)}%0A`;
             });
             message += `%0A💰 *TOTAL: $${total.toFixed(2)}*%0A%0A✅ ¡Gracias!`;
             window.open(`https://wa.me/${config.whatsappNumber}?text=${message}`, '_blank');
         }
 
-        // ADMIN - Categorías
-        function renderAdminCategoriasList() {
-            if (!listaCategoriasAdmin) return;
-            let html = '<h4>Categorías existentes</h4><div>';
-            categorias.forEach(cat => {
-                html += `<div class="categoria-item">
-                            ${escapeHtml(cat.nombre)}
-                            <span class="categoria-actions">
-                                <button class="edit-categoria" data-id="${cat.id}" style="background:#f39c12; padding:2px 8px; margin-left:5px;">✏️</button>
-                                <button class="delete-categoria" data-id="${cat.id}" style="background:#dc3545; padding:2px 8px;">🗑️</button>
-                            </span>
-                         </div>`;
-            });
-            html += '</div>';
-            listaCategoriasAdmin.innerHTML = html;
-            document.querySelectorAll('.edit-categoria').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = parseInt(btn.dataset.id);
-                    const cat = categorias.find(c => c.id === id);
-                    if (cat) {
-                        const nuevoNombre = prompt("Editar nombre de categoría:", cat.nombre);
-                        if (nuevoNombre && nuevoNombre.trim()) {
-                            cat.nombre = nuevoNombre.trim();
-                            saveCategoriesToLocal();
-                            renderAdminCategoriasList();
-                            cargarCategoriasEnSelect();
-                            renderFiltroCategorias();
-                            renderProductos();
-                            showMessage("Categoría actualizada");
-                        }
-                    }
-                });
-            });
-            document.querySelectorAll('.delete-categoria').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = parseInt(btn.dataset.id);
-                    if (confirm("¿Eliminar categoría? Los productos quedarán sin categoría.")) {
-                        categorias = categorias.filter(c => c.id !== id);
-                        productos.forEach(p => { if (p.categoriaId === id) p.categoriaId = null; });
-                        saveCategoriesToLocal();
-                        saveProductsToLocal();
-                        renderAdminCategoriasList();
-                        cargarCategoriasEnSelect();
-                        renderFiltroCategorias();
-                        renderProductos();
-                        showMessage("Categoría eliminada");
-                    }
-                });
-            });
-        }
-
-        function cargarCategoriasEnSelect() {
-            if (!prodCategoria) return;
-            prodCategoria.innerHTML = '<option value="">Sin categoría</option>';
-            categorias.forEach(cat => {
-                prodCategoria.innerHTML += `<option value="${cat.id}">${escapeHtml(cat.nombre)}</option>`;
-            });
-        }
-
-        function agregarCategoria() {
-            const nombre = nuevaCategoriaNombre.value.trim();
-            if (!nombre) { showMessage("Ingrese un nombre", true); return; }
-            const newId = Date.now();
-            categorias.push({ id: newId, nombre: nombre });
-            saveCategoriesToLocal();
-            nuevaCategoriaNombre.value = '';
-            renderAdminCategoriasList();
-            cargarCategoriasEnSelect();
-            renderFiltroCategorias();
-            showMessage("Categoría agregada");
-        }
-
-        // ADMIN - Productos
-        function renderAdminProductList() {
-            if (!adminProductsList) return;
-            let html = '';
-            productos.forEach(prod => {
-                const estadoTexto = prod.activo ? 'Activo' : 'Inactivo';
-                const estadoClase = prod.activo ? 'estado-activo' : 'estado-inactivo';
-                const catNombre = categorias.find(c => c.id == prod.categoriaId)?.nombre || 'Sin categoría';
-                html += `
-                    <div class="product-admin-row">
-                        <img class="product-admin-img" src="${prod.imagenBase64 || 'https://placehold.co/65x65'}">
-                        <div style="flex:2">
-                            <strong>${escapeHtml(prod.nombre)}</strong> - $${prod.precio.toFixed(2)}<br>
-                            <span style="font-size:0.7rem;">${escapeHtml(catNombre)}</span><br>
-                            <span class="estado-badge ${estadoClase}">${estadoTexto}</span>
-                        </div>
-                        <div>
-                            <button class="admin-edit" data-id="${prod.id}" style="background:#f39c12;">Editar</button>
-                            <button class="admin-toggle-status" data-id="${prod.id}" style="background:${prod.activo ? '#dc3545' : '#28a745'};">${prod.activo ? 'Desactivar' : 'Activar'}</button>
-                            <button class="admin-delete" data-id="${prod.id}" style="background:#6c757d;">Eliminar</button>
-                        </div>
-                    </div>
-                `;
-            });
-            adminProductsList.innerHTML = html;
-            document.querySelectorAll('.admin-edit').forEach(b => b.addEventListener('click', () => loadProductForEdit(parseInt(b.dataset.id))));
-            document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar?")) { productos = productos.filter(p => p.id != b.dataset.id); persistAll(); showMessage("Eliminado"); } }));
-            document.querySelectorAll('.admin-toggle-status').forEach(b => b.addEventListener('click', () => {
-                const id = parseInt(b.dataset.id);
-                const prod = productos.find(p => p.id === id);
-                if (prod) { prod.activo = !prod.activo; persistAll(); showMessage(`Producto ${prod.activo ? 'activado' : 'desactivado'}`); }
-            }));
-        }
-
-        function loadProductForEdit(id) {
-            const prod = productos.find(p => p.id === id);
-            if(!prod) return;
-            editId.value = prod.id;
-            prodName.value = prod.nombre;
-            prodPrice.value = prod.precio;
-            prodDescription.value = prod.descripcion;
-            prodEstado.value = prod.activo ? 'activo' : 'inactivo';
-            prodCategoria.value = prod.categoriaId || '';
-            if(prod.imagenBase64) imagePreview.innerHTML = `<img src="${prod.imagenBase64}" style="max-width:100px; border-radius:16px;"><button type="button" id="clearImgBtn" style="background:gray;">X</button>`;
-            else imagePreview.innerHTML = '';
-            document.getElementById('clearImgBtn')?.addEventListener('click', () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guardar cambios)"); });
-        }
-
-        function saveProductAdmin() {
-            const nombre = prodName.value.trim();
-            const precio = parseFloat(prodPrice.value);
-            const desc = prodDescription.value.trim();
-            const activo = prodEstado.value === 'activo';
-            const categoriaId = prodCategoria.value ? parseInt(prodCategoria.value) : null;
-            if(!nombre || isNaN(precio) || !desc) { showMessage("Completa todos los campos", true); return; }
-            const file = prodImage.files[0];
-            const save = (b64) => {
-                const idEditar = editId.value;
-                if(idEditar) {
-                    const idx = productos.findIndex(p => p.id == idEditar);
-                    if(idx !== -1) {
-                        productos[idx].nombre = nombre;
-                        productos[idx].precio = precio;
-                        productos[idx].descripcion = desc;
-                        productos[idx].activo = activo;
-                        productos[idx].categoriaId = categoriaId;
-                        if(b64) productos[idx].imagenBase64 = b64;
-                    }
-                } else {
-                    productos.push({ id: Date.now(), nombre, precio, descripcion: desc, activo: activo, categoriaId: categoriaId, imagenBase64: b64 || null });
-                }
-                persistAll();
-                resetAdminForm();
-                showMessage("Producto guardado");
-            };
-            if(file) {
-                if(file.size > 2*1024*1024) { showMessage("Imagen >2MB", true); return; }
-                const reader = new FileReader();
-                reader.onload = e => save(e.target.result);
-                reader.readAsDataURL(file);
-            } else save(null);
-        }
-
-        function resetAdminForm() {
-            editId.value = '';
-            prodName.value = '';
-            prodPrice.value = '';
-            prodDescription.value = '';
-            prodImage.value = '';
-            imagePreview.innerHTML = '';
-            prodEstado.value = 'activo';
-            prodCategoria.value = '';
-        }
-
-        function exportDataToJSON() {
-            const exportData = { productos, categorias, config: { whatsappNumber: config.whatsappNumber }, version: "1.2", lastExport: new Date().toISOString() };
-            const dataStr = JSON.stringify(exportData, null, 2);
-            const blob = new Blob([dataStr], {type: "application/json"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "modafit_data.json";
-            a.click();
-            URL.revokeObjectURL(url);
-            showMessage("📁 JSON exportado con categorías");
-        }
-
-        function importFromJSON(file) {
-            const reader = new FileReader();
-            reader.onload = e => {
-                try {
-                    const imported = JSON.parse(e.target.result);
-                    if(imported.productos) productos = imported.productos;
-                    if(imported.categorias) categorias = imported.categorias;
-                    if(imported.config) config.whatsappNumber = imported.config.whatsappNumber;
-                    persistAll();
-                    if (whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
-                    showMessage("Importación exitosa");
-                } catch(err) { showMessage("JSON inválido", true); }
-            };
-            reader.readAsText(file);
-        }
-
-        // Rutas y autenticación
+        // ==================== ADMIN ====================
         function checkRoute() {
             if (window.location.hash === '#/admin' || window.location.pathname.includes('/admin')) {
                 publicShopDiv.style.display = 'none';
@@ -1198,8 +1107,8 @@
                 adminLoginSection.style.display = 'none'; 
                 adminDashboardDiv.style.display = 'block'; 
                 renderAdminProductList(); 
-                renderAdminCategoriasList();
-                cargarCategoriasEnSelect();
+                renderCategoriasAdmin();
+                actualizarSelectCategorias();
             } else { 
                 adminLoginSection.style.display = 'block'; 
                 adminDashboardDiv.style.display = 'none'; 
@@ -1218,11 +1127,140 @@
             window.location.href = window.location.pathname; 
             checkRoute(); 
         }
-
+        function renderAdminProductList() {
+            if (!adminProductsList) return;
+            let html = '';
+            productos.forEach(prod => {
+                const estadoTexto = prod.activo ? 'Activo' : 'Inactivo';
+                const estadoClase = prod.activo ? 'estado-activo' : 'estado-inactivo';
+                html += `
+                    <div class="product-admin-row">
+                        <img class="product-admin-img" src="${prod.imagenBase64 || 'https://placehold.co/65x65'}">
+                        <div style="flex:2">
+                            <strong>${escapeHtml(prod.nombre)}</strong> - $${prod.precio.toFixed(2)}<br>
+                            <span class="estado-badge ${estadoClase}">${estadoTexto}</span>
+                            ${prod.categoria ? `<span style="margin-left:8px; background:#e67e22; padding:2px 8px; border-radius:20px; font-size:0.7rem;">${escapeHtml(prod.categoria)}</span>` : ''}
+                        </div>
+                        <div>
+                            <button class="admin-edit" data-id="${prod.id}" style="background:#f39c12;">Editar</button>
+                            <button class="admin-toggle-status" data-id="${prod.id}" style="background:${prod.activo ? '#dc3545' : '#28a745'};">${prod.activo ? 'Desactivar' : 'Activar'}</button>
+                            <button class="admin-delete" data-id="${prod.id}" style="background:#6c757d;">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            adminProductsList.innerHTML = html;
+            document.querySelectorAll('.admin-edit').forEach(b => b.addEventListener('click', () => loadProductForEdit(parseInt(b.dataset.id))));
+            document.querySelectorAll('.admin-delete').forEach(b => b.addEventListener('click', () => { if(confirm("¿Eliminar permanentemente?")) { productos = productos.filter(p => p.id != b.dataset.id); persistAll(); showMessage("Eliminado"); } }));
+            document.querySelectorAll('.admin-toggle-status').forEach(b => b.addEventListener('click', () => {
+                const id = parseInt(b.dataset.id);
+                const prod = productos.find(p => p.id === id);
+                if (prod) {
+                    prod.activo = !prod.activo;
+                    persistAll();
+                    showMessage(`Producto ${prod.activo ? 'activado' : 'desactivado'}`);
+                }
+            }));
+        }
+        function loadProductForEdit(id) {
+            const prod = productos.find(p => p.id === id);
+            if(!prod) return;
+            editId.value = prod.id;
+            prodName.value = prod.nombre;
+            prodPrice.value = prod.precio;
+            prodDescription.value = prod.descripcion;
+            prodEstado.value = prod.activo ? 'activo' : 'inactivo';
+            prodCategoria.value = prod.categoria || '';
+            if(prod.imagenBase64) imagePreview.innerHTML = `<img src="${prod.imagenBase64}" style="max-width:100px; border-radius:16px;"><button type="button" id="clearImgBtn" style="background:gray;">X</button>`;
+            else imagePreview.innerHTML = '';
+            const clearBtn = document.getElementById('clearImgBtn');
+            if (clearBtn) clearBtn.onclick = () => { prod.imagenBase64 = null; imagePreview.innerHTML = ''; showMessage("Imagen eliminada (guarda cambios)"); };
+        }
+        function saveProductAdmin() {
+            const nombre = prodName.value.trim();
+            const precio = parseFloat(prodPrice.value);
+            const desc = prodDescription.value.trim();
+            const activo = prodEstado.value === 'activo';
+            const categoria = prodCategoria.value;
+            if(!nombre || isNaN(precio) || !desc) { showMessage("Completa todos los campos", true); return; }
+            const file = prodImage.files[0];
+            const save = (b64) => {
+                const idEditar = editId.value;
+                if(idEditar) {
+                    const idx = productos.findIndex(p => p.id == idEditar);
+                    if(idx !== -1) {
+                        productos[idx].nombre = nombre;
+                        productos[idx].precio = precio;
+                        productos[idx].descripcion = desc;
+                        productos[idx].activo = activo;
+                        productos[idx].categoria = categoria || null;
+                        if(b64) productos[idx].imagenBase64 = b64;
+                    }
+                } else {
+                    productos.push({ id: Date.now(), nombre, precio, descripcion: desc, activo: activo, categoria: categoria || null, imagenBase64: b64 || null });
+                }
+                persistAll();
+                resetAdminForm();
+                showMessage("Producto guardado localmente. Recuerda exportar a JSON para subir cambios.");
+            };
+            if(file) {
+                if(file.size > 2*1024*1024) { showMessage("Imagen >2MB", true); return; }
+                const reader = new FileReader();
+                reader.onload = e => save(e.target.result);
+                reader.readAsDataURL(file);
+            } else save(null);
+        }
+        function resetAdminForm() {
+            editId.value = '';
+            prodName.value = '';
+            prodPrice.value = '';
+            prodDescription.value = '';
+            prodImage.value = '';
+            imagePreview.innerHTML = '';
+            prodEstado.value = 'activo';
+            if(prodCategoria) prodCategoria.value = '';
+        }
+        function exportDataToJSON() {
+            const exportData = { productos, categorias, config: { whatsappNumber: config.whatsappNumber }, version: "1.2", lastExport: new Date().toISOString() };
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const blob = new Blob([dataStr], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "modafit_data.json";
+            a.click();
+            URL.revokeObjectURL(url);
+            showMessage("📁 Archivo JSON exportado con categorías. Súbelo a tu GitHub.");
+        }
+        function importFromJSON(file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if(imported.productos && Array.isArray(imported.productos)) {
+                        productos = imported.productos;
+                        if(imported.categorias && Array.isArray(imported.categorias)) categorias = imported.categorias;
+                        else {
+                            const catsUnicas = [...new Set(productos.map(p => p.categoria).filter(c => c && c.trim() !== ""))];
+                            categorias = catsUnicas;
+                        }
+                        persistAll();
+                        if(imported.config && imported.config.whatsappNumber) {
+                            config.whatsappNumber = imported.config.whatsappNumber;
+                            saveConfigToLocal();
+                            if(whatsappNumberConfig) whatsappNumberConfig.value = config.whatsappNumber;
+                        }
+                        showMessage("Importación exitosa desde archivo local");
+                    } else throw new Error();
+                } catch(err) { showMessage("JSON inválido", true); }
+            };
+            reader.readAsText(file);
+        }
         function saveWhatsappConfig() { config.whatsappNumber = whatsappNumberConfig.value.trim(); saveConfigToLocal(); showMessage("WhatsApp actualizado"); }
         function changeAdminPassword() { const newP = newAdminPass.value.trim(); if(newP.length<4) { showMessage("Mínimo 4 caracteres", true); return; } adminPassword = newP; localStorage.setItem(STORAGE_ADMIN_PASS, adminPassword); showMessage("Contraseña cambiada"); newAdminPass.value = ''; }
-        function saveRemoteUrlSetting() { localStorage.setItem(STORAGE_REMOTE_URL, remoteJsonUrlInput.value.trim()); showMessage("URL guardada"); }
+        function saveRemoteUrlSetting() { const newUrl = remoteJsonUrlInput.value.trim(); localStorage.setItem(STORAGE_REMOTE_URL, newUrl); remoteJsonUrl = newUrl; showMessage("URL remota guardada"); }
 
+        // Eventos generales
         function openCart() { renderCartModal(); cartModal.style.display = 'flex'; }
         cartIconHeader.addEventListener('click', openCart);
         floatingCartBtn.addEventListener('click', openCart);
@@ -1240,12 +1278,13 @@
         exportDataBtn.addEventListener('click', exportDataToJSON);
         importDataBtn.addEventListener('click', () => importFileInput.click());
         importFileInput.addEventListener('change', (e) => { if(e.target.files[0]) importFromJSON(e.target.files[0]); e.target.value = ''; });
-        fetchRemoteDataBtn.addEventListener('click', () => loadFromRemoteJson(true, true));
+        fetchRemoteDataBtn.addEventListener('click', () => loadProductsFromRemoteJson(true, true));
         if(remoteJsonUrlInput) remoteJsonUrlInput.addEventListener('change', saveRemoteUrlSetting);
-        agregarCategoriaBtn.addEventListener('click', agregarCategoria);
+        if(addCategoriaBtn) addCategoriaBtn.addEventListener('click', agregarCategoria);
 
         function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
+        // Inicialización
         async function init() {
             const storedConfig = localStorage.getItem(STORAGE_CONFIG);
             if (storedConfig) config = JSON.parse(storedConfig);
@@ -1263,8 +1302,8 @@
             if (savedRemoteUrl) remoteJsonUrl = savedRemoteUrl;
             if (remoteJsonUrlInput) remoteJsonUrlInput.value = remoteJsonUrl;
 
-            await loadFromRemoteJson(true, true);
-            renderFiltroCategorias();
+            await loadProductsFromRemoteJson(true, true);
+            construirBarraCategorias();
             checkRoute();
             window.addEventListener('hashchange', checkRoute);
         }
